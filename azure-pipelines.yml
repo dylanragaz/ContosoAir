@@ -5,25 +5,16 @@
 
 pool:
   vmImage: vs2017-win2016
-  name: Azure Pipelines
-  demands: npm
 trigger:
   - master
-steps:  
-  - task: Npm@1
-    displayName: 'npm install'
-    inputs:
-      verbose: false
+steps:
   - task: Npm@1
     inputs:
       command: 'custom'
       customcommand: 'install --production'
-  - task: Npm@1
-    displayName: 'npm test'
-    inputs:
-      command: custom
-      verbose: false
-      customCommand: 'run test'
+  - script: 'npm test'
+    displayName: 'Run unit tests'
+    continueOnError: true
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
     condition: succeededOrFailed()
