@@ -11,7 +11,7 @@ steps:
   - task : Npm@1
     inputs:
       command: 'custom'
-      customcommand: 'npm install --save-dev jest-yaml-transform'
+      customcommand: 'install --save-dev jest-yaml-transform'
   - task: Npm@1
     inputs:
       command: 'custom'
