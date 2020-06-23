@@ -8,6 +8,9 @@ pool:
 trigger:
   - master
 steps:
+  - task : installJest@1
+    input:
+      customcommand: 'npm install --save-dev jest-yaml-transform'
   - task: Npm@1
     inputs:
       command: 'custom'
